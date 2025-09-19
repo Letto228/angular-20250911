@@ -11,12 +11,6 @@
     "lint": "ng lint",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "*.{ts,js,json,css,scss,md}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
   "private": true,
   "dependencies": {
     "@angular/common": "^20.3.0",
