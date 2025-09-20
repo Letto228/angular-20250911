@@ -9,7 +9,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "precommit": "yarn lint-staged"
+    "precommit": "lint-staged",
+    "postinstall": "husky install",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
