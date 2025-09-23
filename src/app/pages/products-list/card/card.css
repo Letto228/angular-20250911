@@ -1,0 +1,9 @@
+mat-card {
+    margin: 16px;
+}
+
+mat-card img[mat-card-md-image] {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
