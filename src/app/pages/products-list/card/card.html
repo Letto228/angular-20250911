@@ -1,0 +1,8 @@
+<mat-card appearance="outlined" class="example-card" (click)="onCardClick($event)">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{product.price}}</mat-card-title>
+            <img mat-card-sm-image [src]="product.images[0].url" />
+        </mat-card-title-group>
+    </mat-card-header>
+</mat-card>
