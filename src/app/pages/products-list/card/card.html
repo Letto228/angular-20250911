@@ -1,0 +1,33 @@
+<mat-card style="max-width: 50%">
+    <mat-card-content>
+        <h2>{{product.name}}</h2>
+        <p>
+            <strong>Цена:</strong>
+            {{product.price}}
+        </p>
+        <div>
+            <strong>Рейтинг:</strong>
+            {{product.rating}}
+            <span
+                #grayStars
+                class="stars"
+                [ngStyle]="{
+                    color: 'gray'
+                }"
+            >
+                ★★★★★
+            </span>
+            <span
+                class="stars"
+                [style.width.px]="((product.rating/5)*starsWidth)"
+                [ngStyle]="{
+                    color: 'gold',
+                    overflow: 'hidden'
+                }"
+            >
+                ★★★★★
+            </span>
+        </div>
+        <img mat-card-md-image alt="{{product.name}}" [src]="product.images[0].url" />
+    </mat-card-content>
+</mat-card>
