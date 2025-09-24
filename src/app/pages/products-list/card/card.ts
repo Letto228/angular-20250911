@@ -1,5 +1,5 @@
 import {NgStyle} from '@angular/common';
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
@@ -8,11 +8,15 @@ import {MatCardModule} from '@angular/material/card';
     templateUrl: './card.html',
     styleUrl: './card.css',
 })
-export class Card implements OnInit {
+export class Card implements AfterViewInit {
+    @ViewChild('grayStars') grayStarsRef!: ElementRef;
     @Input() product: any;
 
-    ngOnInit() {
-        console.log(this.product);
+    starsWidth = 0;
+
+    ngAfterViewInit() {
+        console.log(this.grayStarsRef.nativeElement);
+        this.starsWidth = this.grayStarsRef.nativeElement.offsetWidth;
     }
 
     onClick() {

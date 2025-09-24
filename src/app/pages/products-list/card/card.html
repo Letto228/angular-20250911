@@ -9,16 +9,18 @@
             <strong>Рейтинг:</strong>
             {{product.rating}}
             <span
+                #grayStars
+                class="stars"
                 [ngStyle]="{
-                    position: 'absolute'
+                    color: 'gray'
                 }"
             >
                 ★★★★★
             </span>
             <span
-                [style.width.px]="((product.rating/5)*58.31)"
+                class="stars"
+                [style.width.px]="((product.rating/5)*starsWidth)"
                 [ngStyle]="{
-                    position: 'absolute',
                     color: 'gold',
                     overflow: 'hidden'
                 }"
