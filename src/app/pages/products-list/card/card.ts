@@ -1,5 +1,13 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {productsMock} from '../../../shared/products/products.mock';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+    Signal,
+    WritableSignal,
+    input,
+} from '@angular/core';
 import {
     MatCard,
     MatCardActions,
@@ -10,6 +18,7 @@ import {
 } from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatIconButton} from '@angular/material/button';
+import {Product} from '../../../shared/products/product.type';
 
 @Component({
     selector: 'app-card',
@@ -29,16 +38,27 @@ import {MatButton, MatIconButton} from '@angular/material/button';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Card {
-    readonly product = productsMock[0];
+    @Input() index!: WritableSignal<number>;
+    @Input() product!: Signal<Product>;
+    maxIndex = input.required<number>();
+    @Output() onBuyEvent = new EventEmitter<Product>();
+
+    incIndex() {
+        this.index.update(c => c + 1);
+    }
+
+    decIndex() {
+        this.index.update(c => c - 1);
+    }
 
     onProductBuy(event: Event) {
         event.stopPropagation();
 
         // eslint-disable-next-line no-console
-        console.log('Buy product');
+        this.onBuyEvent.emit(this.product());
     }
 
     isStarActive(starIndex: number): boolean {
-        return this.product.rating >= starIndex;
+        return this.product().rating >= starIndex;
     }
 }
