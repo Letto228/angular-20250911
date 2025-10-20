@@ -1,0 +1,13 @@
+.popup-host {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
