@@ -1,0 +1,26 @@
+:host {
+    position: absolute;
+}
+
+.popup-wrappper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.empty {
+    display: none;
+}
+
+.popup-content {
+    padding: 16px;
+
+    background-color: #fff;
+    border-radius: 8px;
+}
