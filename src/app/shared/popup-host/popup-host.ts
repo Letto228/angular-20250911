@@ -17,7 +17,7 @@ import {CommonModule} from '@angular/common';
     imports: [CommonModule],
 })
 export class PopupHostComponent {
-    template = input<TemplateRef<any> | null>(null);
+    template = input<TemplateRef<unknown> | null>(null);
 
     container = viewChild('container', {read: ViewContainerRef});
 
@@ -26,12 +26,14 @@ export class PopupHostComponent {
             const currentTemplate = this.template();
             const viewContainer = this.container();
 
-            if (viewContainer) {
-                viewContainer.clear();
+            if (!viewContainer) {
+                return;
+            }
 
-                if (currentTemplate) {
-                    viewContainer.createEmbeddedView(currentTemplate);
-                }
+            viewContainer.clear();
+
+            if (currentTemplate) {
+                viewContainer.createEmbeddedView(currentTemplate);
             }
         });
     }
