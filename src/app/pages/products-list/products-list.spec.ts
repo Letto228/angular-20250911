@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 
 import {ProductsList} from './products-list';
 
@@ -19,4 +19,16 @@ describe('ProductsList', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should append products when load next data triggers', fakeAsync(() => {
+        tick(3000);
+
+        const initialLength = component.products()?.length ?? 0;
+        expect(initialLength).toBeGreaterThan(0);
+
+        component.onLoadNextData();
+
+        const updatedLength = component.products()?.length ?? 0;
+        expect(updatedLength).toBeGreaterThan(initialLength);
+    }));
 });
