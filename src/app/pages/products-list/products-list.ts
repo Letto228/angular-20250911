@@ -27,8 +27,7 @@ export class ProductsList {
 
     private loadProducts() {
         setTimeout(() => {
-            this.loadedProductsCount = Math.min(this.productsBatchSize, productsMock.length);
-            this.products.set(productsMock.slice(0, this.loadedProductsCount));
+            this.products.set(productsMock);
         }, 3000);
     }
 }

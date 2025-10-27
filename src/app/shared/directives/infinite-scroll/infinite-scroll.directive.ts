@@ -12,15 +12,14 @@ export class InfiniteScrollDirective {
 
     private previousScrollTop = 0;
     private isWithinOffsetZone = false;
-    private readonly host = inject(ElementRef);
+    private readonly elementHost = inject(ElementRef);
 
     handleScroll() {
-        const element = this.host.nativeElement;
+        const element = this.elementHost.nativeElement;
         const {scrollTop, clientHeight, scrollHeight} = element;
 
         const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
         const isInsideOffsetZone = distanceFromBottom <= this.borderOffset();
-
         if (!isInsideOffsetZone) {
             this.isWithinOffsetZone = false;
         }
