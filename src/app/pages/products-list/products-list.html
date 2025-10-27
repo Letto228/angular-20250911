@@ -1,5 +1,10 @@
 @if (this.products(); as products) {
-<div class="scroll-container">
+<div
+    appInfiniteScroll
+    class="scroll-container"
+    [borderOffset]="100"
+    (loadNextData)="onLoadNextData()"
+>
     @for (product of products; track product._id) {
     <app-card class="card" [product]="product"></app-card>
     }
